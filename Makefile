@@ -10,7 +10,7 @@ all: BinarySearchTree_Test.out
 BinarySearchTree_Test.out:BinarySearchTree_Test.o
 	g++ -o $@ $^
 
-BinarySearchTree_Test.o:BinarySearchTree_Test.cc BinarySearchTree.h
+BinarySearchTree_Test.o:BinarySearchTree_Test.cc BinarySearchTree.h detail_header/bstImpl.h
 
 .PHONY:clean
 clean: 
