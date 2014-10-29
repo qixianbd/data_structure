@@ -33,6 +33,7 @@ public:
 	bool contains(const T& elem)const;
 	void print(std::ostream& os = std::cout);
 	void printAsTree(std::ostream & os = std::cout);
+	size_t hight()const;
 
 private:
 
@@ -55,11 +56,28 @@ private:
 
 	Node* proot;
 	Comp cmp;
+	size_t len;
 	bool contains(Node* root, const T& elem)const;
 	void insert(Node* &root, const T& elem);
 	void remove(Node* &root, const T& elem);
 	void print(Node* root, std::ostream& os);
 	void printAsTree(Node* root, std::ostream& os);
+	size_t hight(Node* root)const{
+		if(NULL == root){
+			return 0;
+		}
+		return std::max(hight(root->lchild), hight(root->rchild))+1;
+	}
+	Node* clone(const Node* root){
+		if(NULL == root){
+			return NULL;
+		}
+		Node *p = new Node(root->data, NULL, NULL);
+		insert(proot, root->data);
+		clone(root->lchild);
+		clone(root->rchild);
+		return proot;
+	}
 
 	size_t size(Node* root)const;
 	void clear(Node* &root);
@@ -87,11 +105,7 @@ private:
 			return root;
 		}
 		else{
-			Node* pos = root;
-			while(pos->rchild != NULL){
-				pos = pos->rchild;
-			}
-			return pos;
+			return findMax(root->rchild);
 		}
 	}
 };

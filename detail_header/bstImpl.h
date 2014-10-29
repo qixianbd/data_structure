@@ -8,27 +8,30 @@
 #ifndef BSTIMPL_H_
 #define BSTIMPL_H_
 #include <queue>
+#include <stdexcept>
 
 template<typename T, typename Comp >
-inline BinarySearchTree<T, Comp>::BinarySearchTree():proot(NULL){
+inline BinarySearchTree<T, Comp>::BinarySearchTree():proot(NULL), len(0){
 }
 
 template<typename T, typename Comp>
 inline BinarySearchTree<T, Comp>::BinarySearchTree(
-		const BinarySearchTree& bst) {
-	proot = bst.proot;
-	cmp = bst.cmp;
+		const BinarySearchTree& bst):proot(NULL),cmp(bst.cmp), len(bst.len){
+	proot = clone(bst.proot);
 }
 
 template<typename T, typename Comp >
 inline BinarySearchTree<T, Comp>::~BinarySearchTree() {
 	clear();
 	proot = NULL;
+	len = 0;
 }
 
 template<typename T, typename Comp >
 const BinarySearchTree<T, Comp>& BinarySearchTree<T, Comp>::operator=(const BinarySearchTree& bst) {
-	proot = bst.proot;
+	clear();
+	clone(bst);
+	len = bst.len;
 	cmp = bst.cmp;
 	return *this;
 }
@@ -36,7 +39,6 @@ const BinarySearchTree<T, Comp>& BinarySearchTree<T, Comp>::operator=(const Bina
 template<typename T, typename Comp>
 void BinarySearchTree<T, Comp>::insert(const T& elem) {
 	return insert(proot, elem);
-
 }
 
 
@@ -45,6 +47,7 @@ template<typename T, typename Comp>
 void BinarySearchTree<T, Comp>::insert(Node* &root, const T& elem) {
 	if(NULL == root){
 		root = new Node(elem, NULL, NULL);
+		len++;
 		return ;
 	}
 
@@ -110,19 +113,31 @@ inline void BinarySearchTree<T, Comp>::remove(const T& elem) {
 
 template<typename T, typename Comp>
 inline void BinarySearchTree<T, Comp>::clear() {
-	return clear(proot);
+	clear(proot);
+	proot = NULL;
+	len = 0;
+	return;
 }
 
 template<typename T, typename Comp>
 inline const T& BinarySearchTree<T, Comp>::findMax() const {
+	if(len == 0){
+		throw std::out_of_range("len = 0");
+	}
+	return findMax(proot)->data;
 }
 
 template<typename T, typename Comp>
 inline const T& BinarySearchTree<T, Comp>::findMin() const {
+	if(len == 0){
+		throw std::out_of_range("len = 0");
+	}
+	return findMin(proot)->data;
 }
 
 template<typename T, typename Comp>
 inline size_t BinarySearchTree<T, Comp>::size() const {
+	return len;
 }
 
 template<typename T, typename Comp>
@@ -179,6 +194,7 @@ void BinarySearchTree<T, Comp>::remove(Node*& root, const T& elem) {
 		if(root->rchild == NULL && root->lchild == NULL){
 			delete root;
 			root = NULL;
+			len--;
 			return ;
 		}
 		else if(root->rchild == NULL){
@@ -247,10 +263,17 @@ void BinarySearchTree<T, Comp>::printAsTree(Node* root, std::ostream& os){
 
 template<typename T, typename Comp>
 size_t BinarySearchTree<T, Comp>::size(Node* root) const {
+	return len;
+}
+
+template<typename T, typename Comp>
+inline size_t BinarySearchTree<T, Comp>::hight() const {
+	return hight(proot);
 }
 
 template<typename T, typename Comp>
 void BinarySearchTree<T, Comp>::clear(Node*& root) {
+	static size_t icount = 0;
 	if(NULL == root){
 		return ;
 	}
@@ -258,6 +281,8 @@ void BinarySearchTree<T, Comp>::clear(Node*& root) {
 	clear(root->rchild);
 	if(NULL == root->lchild && NULL == root->rchild){
 		delete root;
+		icount++;
+		std::cerr << "icount = " << icount << std::endl;
 		root = NULL;
 	}
 	return ;
