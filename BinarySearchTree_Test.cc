@@ -21,10 +21,15 @@ int main()
 	btd.print();
 	btd.printAsTree();
 	bool ret = btd.contains(8);
-	std::cout << ret << std::endl;
-	bt.printAsTree();
-	bt.clear();
-	bt.printAsTree();
+	std::cout << "ret = " << ret << std::endl;
+	//bt.printAsTree();
+	//bt.clear();
+	//bt.printAsTree();
+
+	for(int i = 1; i < 5; i++){
+		btd.remove(i);
+	}
+	btd.printAsTree();
 	return 0;
 }
 

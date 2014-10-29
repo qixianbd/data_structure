@@ -35,6 +35,7 @@ public:
 	void printAsTree(std::ostream & os = std::cout);
 
 private:
+
 	struct Node{
 		T data;
 		Node *lchild;
@@ -52,7 +53,7 @@ private:
 		}
 	};
 
-	Node* root;
+	Node* proot;
 	Comp cmp;
 	bool contains(Node* root, const T& elem)const;
 	void insert(Node* &root, const T& elem);
@@ -62,7 +63,37 @@ private:
 
 	size_t size(Node* root)const;
 	void clear(Node* &root);
-	const T& findMax(Node* root)const;
+
+	Node* findMin(Node* root)const{
+		if(root == NULL){
+			return NULL;
+		}
+		if(root->lchild == NULL){
+			return root;
+		}
+		else{
+			Node* pos = root;
+			while(pos->lchild != NULL){
+				pos = pos->lchild;
+			}
+			return pos;
+		}
+	}
+	Node* findMax(Node* root)const{
+		if(root == NULL){
+			return NULL;
+		}
+		if(root->rchild == NULL){
+			return root;
+		}
+		else{
+			Node* pos = root;
+			while(pos->rchild != NULL){
+				pos = pos->rchild;
+			}
+			return pos;
+		}
+	}
 };
 
 
