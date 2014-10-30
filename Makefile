@@ -5,12 +5,12 @@ CXXFLAGS= -c -g -Wall
 LANG=en_US
 
 .PHONY:all
-all: BinarySearchTree_Test.out AvlTree_Test.out Random_Test.out
+all: BinarySearchTree_Test.out AvlTree_Test.out Random_Test.out SearchTreePerformanceTest.out
 
-BinarySearchTree_Test.out:BinarySearchTree_Test.o
+BinarySearchTree_Test.out:BinarySearchTree_Test.o Random.o
 	g++ -o $@ $^
 
-BinarySearchTree_Test.o:BinarySearchTree_Test.cc BinarySearchTree.h detail_header/bstImpl.h
+BinarySearchTree_Test.o:BinarySearchTree_Test.cc BinarySearchTree.h detail_header/bstImpl.h Random.h
 
 AvlTree_Test.out:AvlTree_Test.o Random.o
 	g++ -o $@ $^
@@ -22,6 +22,11 @@ Random_Test.out:Random_Test.o Random.o
 	
 Random_Test.o:Random_Test.cc Random.h
 Random.o:Random.cc Random.h
+
+SearchTreePerformanceTest.out:SearchTreePerformanceTest.o Random.o 
+	g++ -o $@ $^
+SearchTreePerformanceTest.o:SearchTreePerformanceTest.cc Random.h AvlTree.h BinarySearchTree.h
+
 
 .PHONY:clean
 clean: 

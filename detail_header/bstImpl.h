@@ -272,6 +272,15 @@ inline size_t BinarySearchTree<T, Comp>::hight() const {
 }
 
 template<typename T, typename Comp>
+inline void BinarySearchTree<T, Comp>::printToDot(std::ostream& os) {
+	return printToDot(proot, os);
+}
+
+template<typename T, typename Comp>
+inline void BinarySearchTree<T, Comp>::printToDot(const Node* root,
+		std::ostream& os);
+
+template<typename T, typename Comp>
 void BinarySearchTree<T, Comp>::clear(Node*& root) {
 	static size_t icount = 0;
 	if(NULL == root){
@@ -282,7 +291,7 @@ void BinarySearchTree<T, Comp>::clear(Node*& root) {
 	if(NULL == root->lchild && NULL == root->rchild){
 		delete root;
 		icount++;
-		std::cerr << "icount = " << icount << std::endl;
+		//std::cerr << "icount = " << icount << std::endl;
 		root = NULL;
 	}
 	return ;

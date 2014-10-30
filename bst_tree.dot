@@ -1,0 +1,515 @@
+
+digraph G{
+	label = "binary_search_tree"	style = "dashed";
+	color = purple;
+	Node0 [ label = "1 "];
+	Node0->{ Node1 }
+	Node1 [ label = "2 "];
+	Node1->{ Node2 }
+	Node2 [ label = "3 "];
+	Node2->{ Node3 }
+	Node3 [ label = "253 "];
+	Node3->{ Node4 Node5 }
+	Node4 [ label = "252 "];
+	Node4->{ Node6 }
+	Node5 [ label = "254 "];
+	Node5->{ Node7 }
+	Node6 [ label = "6 "];
+	Node6->{ Node8 Node9 }
+	Node7 [ label = "255 "];
+	Node7->{ }
+	Node8 [ label = "5 "];
+	Node8->{ Node10 }
+	Node9 [ label = "7 "];
+	Node9->{ Node11 }
+	Node10 [ label = "4 "];
+	Node10->{ }
+	Node11 [ label = "249 "];
+	Node11->{ Node12 Node13 }
+	Node12 [ label = "9 "];
+	Node12->{ Node14 Node15 }
+	Node13 [ label = "250 "];
+	Node13->{ Node16 }
+	Node14 [ label = "8 "];
+	Node14->{ }
+	Node15 [ label = "10 "];
+	Node15->{ Node17 }
+	Node16 [ label = "251 "];
+	Node16->{ }
+	Node17 [ label = "246 "];
+	Node17->{ Node18 Node19 }
+	Node18 [ label = "12 "];
+	Node18->{ Node20 Node21 }
+	Node19 [ label = "247 "];
+	Node19->{ Node22 }
+	Node20 [ label = "11 "];
+	Node20->{ }
+	Node21 [ label = "13 "];
+	Node21->{ Node23 }
+	Node22 [ label = "248 "];
+	Node22->{ }
+	Node23 [ label = "243 "];
+	Node23->{ Node24 Node25 }
+	Node24 [ label = "242 "];
+	Node24->{ Node26 }
+	Node25 [ label = "244 "];
+	Node25->{ Node27 }
+	Node26 [ label = "16 "];
+	Node26->{ Node28 Node29 }
+	Node27 [ label = "245 "];
+	Node27->{ }
+	Node28 [ label = "15 "];
+	Node28->{ Node30 }
+	Node29 [ label = "240 "];
+	Node29->{ Node31 Node32 }
+	Node30 [ label = "14 "];
+	Node30->{ }
+	Node31 [ label = "18 "];
+	Node31->{ Node33 Node34 }
+	Node32 [ label = "241 "];
+	Node32->{ }
+	Node33 [ label = "17 "];
+	Node33->{ }
+	Node34 [ label = "238 "];
+	Node34->{ Node35 Node36 }
+	Node35 [ label = "237 "];
+	Node35->{ Node37 }
+	Node36 [ label = "239 "];
+	Node36->{ }
+	Node37 [ label = "21 "];
+	Node37->{ Node38 Node39 }
+	Node38 [ label = "20 "];
+	Node38->{ Node40 }
+	Node39 [ label = "22 "];
+	Node39->{ Node41 }
+	Node40 [ label = "19 "];
+	Node40->{ }
+	Node41 [ label = "234 "];
+	Node41->{ Node42 Node43 }
+	Node42 [ label = "233 "];
+	Node42->{ Node44 }
+	Node43 [ label = "235 "];
+	Node43->{ Node45 }
+	Node44 [ label = "232 "];
+	Node44->{ Node46 }
+	Node45 [ label = "236 "];
+	Node45->{ }
+	Node46 [ label = "231 "];
+	Node46->{ Node47 }
+	Node47 [ label = "27 "];
+	Node47->{ Node48 Node49 }
+	Node48 [ label = "26 "];
+	Node48->{ Node50 }
+	Node49 [ label = "28 "];
+	Node49->{ Node51 }
+	Node50 [ label = "25 "];
+	Node50->{ Node52 }
+	Node51 [ label = "29 "];
+	Node51->{ Node53 }
+	Node52 [ label = "24 "];
+	Node52->{ Node54 }
+	Node53 [ label = "227 "];
+	Node53->{ Node55 Node56 }
+	Node54 [ label = "23 "];
+	Node54->{ }
+	Node55 [ label = "31 "];
+	Node55->{ Node57 Node58 }
+	Node56 [ label = "228 "];
+	Node56->{ Node59 }
+	Node57 [ label = "30 "];
+	Node57->{ }
+	Node58 [ label = "225 "];
+	Node58->{ Node60 Node61 }
+	Node59 [ label = "229 "];
+	Node59->{ Node62 }
+	Node60 [ label = "224 "];
+	Node60->{ Node63 }
+	Node61 [ label = "226 "];
+	Node61->{ }
+	Node62 [ label = "230 "];
+	Node62->{ }
+	Node63 [ label = "223 "];
+	Node63->{ Node64 }
+	Node64 [ label = "35 "];
+	Node64->{ Node65 Node66 }
+	Node65 [ label = "34 "];
+	Node65->{ Node67 }
+	Node66 [ label = "221 "];
+	Node66->{ Node68 Node69 }
+	Node67 [ label = "33 "];
+	Node67->{ Node70 }
+	Node68 [ label = "220 "];
+	Node68->{ Node71 }
+	Node69 [ label = "222 "];
+	Node69->{ }
+	Node70 [ label = "32 "];
+	Node70->{ }
+	Node71 [ label = "38 "];
+	Node71->{ Node72 Node73 }
+	Node72 [ label = "37 "];
+	Node72->{ Node74 }
+	Node73 [ label = "218 "];
+	Node73->{ Node75 Node76 }
+	Node74 [ label = "36 "];
+	Node74->{ }
+	Node75 [ label = "217 "];
+	Node75->{ Node77 }
+	Node76 [ label = "219 "];
+	Node76->{ }
+	Node77 [ label = "41 "];
+	Node77->{ Node78 Node79 }
+	Node78 [ label = "40 "];
+	Node78->{ Node80 }
+	Node79 [ label = "215 "];
+	Node79->{ Node81 Node82 }
+	Node80 [ label = "39 "];
+	Node80->{ }
+	Node81 [ label = "214 "];
+	Node81->{ Node83 }
+	Node82 [ label = "216 "];
+	Node82->{ }
+	Node83 [ label = "44 "];
+	Node83->{ Node84 Node85 }
+	Node84 [ label = "43 "];
+	Node84->{ Node86 }
+	Node85 [ label = "212 "];
+	Node85->{ Node87 Node88 }
+	Node86 [ label = "42 "];
+	Node86->{ }
+	Node87 [ label = "46 "];
+	Node87->{ Node89 Node90 }
+	Node88 [ label = "213 "];
+	Node88->{ }
+	Node89 [ label = "45 "];
+	Node89->{ }
+	Node90 [ label = "47 "];
+	Node90->{ Node91 }
+	Node91 [ label = "209 "];
+	Node91->{ Node92 Node93 }
+	Node92 [ label = "49 "];
+	Node92->{ Node94 Node95 }
+	Node93 [ label = "210 "];
+	Node93->{ Node96 }
+	Node94 [ label = "48 "];
+	Node94->{ }
+	Node95 [ label = "207 "];
+	Node95->{ Node97 Node98 }
+	Node96 [ label = "211 "];
+	Node96->{ }
+	Node97 [ label = "206 "];
+	Node97->{ Node99 }
+	Node98 [ label = "208 "];
+	Node98->{ }
+	Node99 [ label = "52 "];
+	Node99->{ Node100 Node101 }
+	Node100 [ label = "51 "];
+	Node100->{ Node102 }
+	Node101 [ label = "204 "];
+	Node101->{ Node103 Node104 }
+	Node102 [ label = "50 "];
+	Node102->{ }
+	Node103 [ label = "54 "];
+	Node103->{ Node105 Node106 }
+	Node104 [ label = "205 "];
+	Node104->{ }
+	Node105 [ label = "53 "];
+	Node105->{ }
+	Node106 [ label = "55 "];
+	Node106->{ Node107 }
+	Node107 [ label = "201 "];
+	Node107->{ Node108 Node109 }
+	Node108 [ label = "200 "];
+	Node108->{ Node110 }
+	Node109 [ label = "202 "];
+	Node109->{ Node111 }
+	Node110 [ label = "199 "];
+	Node110->{ Node112 }
+	Node111 [ label = "203 "];
+	Node111->{ }
+	Node112 [ label = "198 "];
+	Node112->{ Node113 }
+	Node113 [ label = "197 "];
+	Node113->{ Node114 }
+	Node114 [ label = "196 "];
+	Node114->{ Node115 }
+	Node115 [ label = "62 "];
+	Node115->{ Node116 Node117 }
+	Node116 [ label = "61 "];
+	Node116->{ Node118 }
+	Node117 [ label = "63 "];
+	Node117->{ Node119 }
+	Node118 [ label = "60 "];
+	Node118->{ Node120 }
+	Node119 [ label = "193 "];
+	Node119->{ Node121 Node122 }
+	Node120 [ label = "59 "];
+	Node120->{ Node123 }
+	Node121 [ label = "65 "];
+	Node121->{ Node124 Node125 }
+	Node122 [ label = "194 "];
+	Node122->{ Node126 }
+	Node123 [ label = "58 "];
+	Node123->{ Node127 }
+	Node124 [ label = "64 "];
+	Node124->{ }
+	Node125 [ label = "191 "];
+	Node125->{ Node128 Node129 }
+	Node126 [ label = "195 "];
+	Node126->{ }
+	Node127 [ label = "57 "];
+	Node127->{ Node130 }
+	Node128 [ label = "67 "];
+	Node128->{ Node131 Node132 }
+	Node129 [ label = "192 "];
+	Node129->{ }
+	Node130 [ label = "56 "];
+	Node130->{ }
+	Node131 [ label = "66 "];
+	Node131->{ }
+	Node132 [ label = "189 "];
+	Node132->{ Node133 Node134 }
+	Node133 [ label = "69 "];
+	Node133->{ Node135 Node136 }
+	Node134 [ label = "190 "];
+	Node134->{ }
+	Node135 [ label = "68 "];
+	Node135->{ }
+	Node136 [ label = "187 "];
+	Node136->{ Node137 Node138 }
+	Node137 [ label = "186 "];
+	Node137->{ Node139 }
+	Node138 [ label = "188 "];
+	Node138->{ }
+	Node139 [ label = "185 "];
+	Node139->{ Node140 }
+	Node140 [ label = "73 "];
+	Node140->{ Node141 Node142 }
+	Node141 [ label = "72 "];
+	Node141->{ Node143 }
+	Node142 [ label = "183 "];
+	Node142->{ Node144 Node145 }
+	Node143 [ label = "71 "];
+	Node143->{ Node146 }
+	Node144 [ label = "182 "];
+	Node144->{ Node147 }
+	Node145 [ label = "184 "];
+	Node145->{ }
+	Node146 [ label = "70 "];
+	Node146->{ }
+	Node147 [ label = "181 "];
+	Node147->{ Node148 }
+	Node148 [ label = "77 "];
+	Node148->{ Node149 Node150 }
+	Node149 [ label = "76 "];
+	Node149->{ Node151 }
+	Node150 [ label = "78 "];
+	Node150->{ Node152 }
+	Node151 [ label = "75 "];
+	Node151->{ Node153 }
+	Node152 [ label = "178 "];
+	Node152->{ Node154 Node155 }
+	Node153 [ label = "74 "];
+	Node153->{ }
+	Node154 [ label = "80 "];
+	Node154->{ Node156 Node157 }
+	Node155 [ label = "179 "];
+	Node155->{ Node158 }
+	Node156 [ label = "79 "];
+	Node156->{ }
+	Node157 [ label = "176 "];
+	Node157->{ Node159 Node160 }
+	Node158 [ label = "180 "];
+	Node158->{ }
+	Node159 [ label = "82 "];
+	Node159->{ Node161 Node162 }
+	Node160 [ label = "177 "];
+	Node160->{ }
+	Node161 [ label = "81 "];
+	Node161->{ }
+	Node162 [ label = "83 "];
+	Node162->{ Node163 }
+	Node163 [ label = "173 "];
+	Node163->{ Node164 Node165 }
+	Node164 [ label = "85 "];
+	Node164->{ Node166 Node167 }
+	Node165 [ label = "174 "];
+	Node165->{ Node168 }
+	Node166 [ label = "84 "];
+	Node166->{ }
+	Node167 [ label = "171 "];
+	Node167->{ Node169 Node170 }
+	Node168 [ label = "175 "];
+	Node168->{ }
+	Node169 [ label = "87 "];
+	Node169->{ Node171 Node172 }
+	Node170 [ label = "172 "];
+	Node170->{ }
+	Node171 [ label = "86 "];
+	Node171->{ }
+	Node172 [ label = "88 "];
+	Node172->{ Node173 }
+	Node173 [ label = "168 "];
+	Node173->{ Node174 Node175 }
+	Node174 [ label = "167 "];
+	Node174->{ Node176 }
+	Node175 [ label = "169 "];
+	Node175->{ Node177 }
+	Node176 [ label = "166 "];
+	Node176->{ Node178 }
+	Node177 [ label = "170 "];
+	Node177->{ }
+	Node178 [ label = "165 "];
+	Node178->{ Node179 }
+	Node179 [ label = "164 "];
+	Node179->{ Node180 }
+	Node180 [ label = "163 "];
+	Node180->{ Node181 }
+	Node181 [ label = "162 "];
+	Node181->{ Node182 }
+	Node182 [ label = "161 "];
+	Node182->{ Node183 }
+	Node183 [ label = "97 "];
+	Node183->{ Node184 Node185 }
+	Node184 [ label = "96 "];
+	Node184->{ Node186 }
+	Node185 [ label = "98 "];
+	Node185->{ Node187 }
+	Node186 [ label = "95 "];
+	Node186->{ Node188 }
+	Node187 [ label = "158 "];
+	Node187->{ Node189 Node190 }
+	Node188 [ label = "94 "];
+	Node188->{ Node191 }
+	Node189 [ label = "100 "];
+	Node189->{ Node192 Node193 }
+	Node190 [ label = "159 "];
+	Node190->{ Node194 }
+	Node191 [ label = "93 "];
+	Node191->{ Node195 }
+	Node192 [ label = "99 "];
+	Node192->{ }
+	Node193 [ label = "101 "];
+	Node193->{ Node196 }
+	Node194 [ label = "160 "];
+	Node194->{ }
+	Node195 [ label = "92 "];
+	Node195->{ Node197 }
+	Node196 [ label = "102 "];
+	Node196->{ Node198 }
+	Node197 [ label = "91 "];
+	Node197->{ Node199 }
+	Node198 [ label = "154 "];
+	Node198->{ Node200 Node201 }
+	Node199 [ label = "90 "];
+	Node199->{ Node202 }
+	Node200 [ label = "104 "];
+	Node200->{ Node203 Node204 }
+	Node201 [ label = "155 "];
+	Node201->{ Node205 }
+	Node202 [ label = "89 "];
+	Node202->{ }
+	Node203 [ label = "103 "];
+	Node203->{ }
+	Node204 [ label = "105 "];
+	Node204->{ Node206 }
+	Node205 [ label = "156 "];
+	Node205->{ Node207 }
+	Node206 [ label = "151 "];
+	Node206->{ Node208 Node209 }
+	Node207 [ label = "157 "];
+	Node207->{ }
+	Node208 [ label = "150 "];
+	Node208->{ Node210 }
+	Node209 [ label = "152 "];
+	Node209->{ Node211 }
+	Node210 [ label = "108 "];
+	Node210->{ Node212 Node213 }
+	Node211 [ label = "153 "];
+	Node211->{ }
+	Node212 [ label = "107 "];
+	Node212->{ Node214 }
+	Node213 [ label = "109 "];
+	Node213->{ Node215 }
+	Node214 [ label = "106 "];
+	Node214->{ }
+	Node215 [ label = "110 "];
+	Node215->{ Node216 }
+	Node216 [ label = "146 "];
+	Node216->{ Node217 Node218 }
+	Node217 [ label = "145 "];
+	Node217->{ Node219 }
+	Node218 [ label = "147 "];
+	Node218->{ Node220 }
+	Node219 [ label = "144 "];
+	Node219->{ Node221 }
+	Node220 [ label = "148 "];
+	Node220->{ Node222 }
+	Node221 [ label = "143 "];
+	Node221->{ Node223 }
+	Node222 [ label = "149 "];
+	Node222->{ }
+	Node223 [ label = "115 "];
+	Node223->{ Node224 Node225 }
+	Node224 [ label = "114 "];
+	Node224->{ Node226 }
+	Node225 [ label = "116 "];
+	Node225->{ Node227 }
+	Node226 [ label = "113 "];
+	Node226->{ Node228 }
+	Node227 [ label = "140 "];
+	Node227->{ Node229 Node230 }
+	Node228 [ label = "112 "];
+	Node228->{ Node231 }
+	Node229 [ label = "118 "];
+	Node229->{ Node232 Node233 }
+	Node230 [ label = "141 "];
+	Node230->{ Node234 }
+	Node231 [ label = "111 "];
+	Node231->{ }
+	Node232 [ label = "117 "];
+	Node232->{ }
+	Node233 [ label = "119 "];
+	Node233->{ Node235 }
+	Node234 [ label = "142 "];
+	Node234->{ }
+	Node235 [ label = "120 "];
+	Node235->{ Node236 }
+	Node236 [ label = "136 "];
+	Node236->{ Node237 Node238 }
+	Node237 [ label = "122 "];
+	Node237->{ Node239 Node240 }
+	Node238 [ label = "137 "];
+	Node238->{ Node241 }
+	Node239 [ label = "121 "];
+	Node239->{ }
+	Node240 [ label = "123 "];
+	Node240->{ Node242 }
+	Node241 [ label = "138 "];
+	Node241->{ Node243 }
+	Node242 [ label = "124 "];
+	Node242->{ Node244 }
+	Node243 [ label = "139 "];
+	Node243->{ }
+	Node244 [ label = "125 "];
+	Node244->{ Node245 }
+	Node245 [ label = "126 "];
+	Node245->{ Node246 }
+	Node246 [ label = "127 "];
+	Node246->{ Node247 }
+	Node247 [ label = "128 "];
+	Node247->{ Node248 }
+	Node248 [ label = "129 "];
+	Node248->{ Node249 }
+	Node249 [ label = "130 "];
+	Node249->{ Node250 }
+	Node250 [ label = "131 "];
+	Node250->{ Node251 }
+	Node251 [ label = "132 "];
+	Node251->{ Node252 }
+	Node252 [ label = "133 "];
+	Node252->{ Node253 }
+	Node253 [ label = "134 "];
+	Node253->{ Node254 }
+	Node254 [ label = "135 "];
+	Node254->{ }
+}

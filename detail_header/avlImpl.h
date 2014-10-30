@@ -27,6 +27,20 @@ inline AvlTree<T>::AvlTree(const T* beg, const T* end) {
 
 template<typename T>
 inline bool AvlTree<T>::contains(AvlNode<T>* root, const T& elem) const {
+	if(NULL == root){
+		return false;
+	}
+
+	if(elem == root->element){
+		return true;
+	}
+	else if(elem < root->element){
+		return contains(root->lchild, elem);
+	}
+	else{
+		return contains(root->rchild, elem);
+	}
+	return false;
 }
 
 template<typename T>
@@ -103,6 +117,7 @@ inline bool AvlTree<T>::isEmpty() const {
 
 template<typename T>
 inline bool AvlTree<T>::contains(const T& elem) const {
+	return contains(proot, elem);
 }
 
 template<typename T>

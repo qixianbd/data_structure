@@ -9,6 +9,7 @@
 #define BINARYSEARCHTREE_H_
 #include <algorithm>
 #include <iostream>
+#include <vector>
 #include <map>
 
 template <typename T, typename Comp = std::less<T> >
@@ -21,6 +22,12 @@ public:
 	const BinarySearchTree& operator=(const BinarySearchTree& bst);
 
 
+	void fillWithArray(const std::vector<T>& v){
+		size_t len = v.size();
+		for(size_t i = 0; i < v.size(); i++){
+			insert(v[i]);
+		}
+	}
 	void insert(const T& elem);
 	void remove (const T& elem);
 	void clear();
@@ -33,6 +40,7 @@ public:
 	bool contains(const T& elem)const;
 	void print(std::ostream& os = std::cout);
 	void printAsTree(std::ostream & os = std::cout);
+	void printToDot(std::ostream &os = std::cout);
 	size_t hight()const;
 
 private:
@@ -62,6 +70,39 @@ private:
 	void remove(Node* &root, const T& elem);
 	void print(Node* root, std::ostream& os);
 	void printAsTree(Node* root, std::ostream& os);
+	void printToDot(const Node* root, std::ostream& os){
+		//std::queue<AvlNode<T>* > que;
+		if(NULL == root){
+			return ;
+		}
+		os << "\ndigraph G{\n";
+		os << "\tlabel = " << "\"binary_search_tree\"";
+		os << "\tstyle = \"dashed\";\n";
+		os << "\tcolor = purple;\n";
+
+		//typedef typename BinarySearchTree<T, Comp>::Node TNode;
+		std::vector<const Node* > nodeList;
+		size_t ip = 0, ichild = 0;
+		nodeList.push_back(root);
+		const Node* pNode = root;
+		while(ip < nodeList.size()){
+			pNode = nodeList[ip];
+			os << "\tNode" << ip << " [ label = \"" << pNode->data << " \"];\n";
+			os << "\tNode" << ip << "->" << "{ ";
+			if(pNode->lchild){
+				os << "Node" << ++ichild << " ";
+				nodeList.push_back(pNode->lchild);
+			}
+			if(pNode->rchild){
+				os << "Node" << ++ichild << " " ;
+				nodeList.push_back(pNode->rchild);
+			}
+			os << "}" << std::endl;
+			ip++;
+		}
+		os << "}" << std::endl;
+		return ;
+	}
 	size_t hight(Node* root)const{
 		if(NULL == root){
 			return 0;
