@@ -12,10 +12,10 @@ BinarySearchTree_Test.out:BinarySearchTree_Test.o
 
 BinarySearchTree_Test.o:BinarySearchTree_Test.cc BinarySearchTree.h detail_header/bstImpl.h
 
-AvlTree_Test.out:AvlTree_Test.o
+AvlTree_Test.out:AvlTree_Test.o Random.o
 	g++ -o $@ $^
 
-AvlTree_Test.o:AvlTree_Test.cc AvlTree.h detail_header/avlImpl.h
+AvlTree_Test.o:AvlTree_Test.cc AvlTree.h detail_header/avlImpl.h Random.h
 
 Random_Test.out:Random_Test.o Random.o
 	g++ -o $@ $^

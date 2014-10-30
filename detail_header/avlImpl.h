@@ -122,17 +122,23 @@ inline void AvlTree<T>::remove(AvlNode<T>*& root, const T& elem) {
 
 template<typename T>
 inline void AvlTree<T>::singleRotateLeftChild(AvlNode<T>*& k2) {
+	if(k2 == NULL){
+		return ;
+	}
 	AvlNode<T>* k1 = k2->lchild;
 	k2->lchild = k1->rchild;
 	k1->rchild = k2;
 
 	k2->height = std::max(height(k2->lchild), height(k2->rchild)) + 1;
-	k1->height = std::max(height(k1->lchild), height(k1->rchild)) + 1;
+	k1->height = std::max(height(k1->lchild), k2->height) + 1;
 	k2 = k1;
 }
 
 template<typename T>
 inline void AvlTree<T>::singleRotateRightChild(AvlNode<T>*& k2) {
+	if(k2 == NULL){
+		return ;
+	}
 	AvlNode<T>* k1 = k2->rchild;
 	k2->rchild = k1->lchild;
 	k1->lchild = k2;
@@ -144,8 +150,8 @@ inline void AvlTree<T>::singleRotateRightChild(AvlNode<T>*& k2) {
 
 template<typename T>
 inline void AvlTree<T>::doubleRotateLeftChild(AvlNode<T>*& root) {
-	singleRotateLeftChild(root->lchild);
-	singleRotateRightChild(root);
+	singleRotateRightChild(root->lchild);
+	singleRotateLeftChild(root);
 }
 
 template<typename T>
@@ -157,6 +163,21 @@ inline void AvlTree<T>::doubleRotateRightChild(AvlNode<T>*& root) {
 template<typename T>
 size_t AvlTree<T>::hight()const{
 	return calHeight(proot);
+}
+
+template<typename T>
+inline void AvlTree<T>::fillWithArray(const std::vector<T>& v) {
+	size_t len = v.size();
+	for(size_t i = 0; i < len; i++){
+		insert(v[i]);
+	}
+}
+
+
+
+template<typename T>
+inline void AvlTree<T>::printToDot(std::ostream& os) {
+	return printToDot(proot, os);
 }
 
 template<typename T>
@@ -213,6 +234,39 @@ void AvlTree<T>::printAsTree(AvlNode<T>* root, std::ostream& os){
 	}
 }
 
+template<typename T>
+inline void AvlTree<T>::printToDot(const AvlNode<T>* root, std::ostream& os) const {
+	//std::queue<AvlNode<T>* > que;
+	if(NULL == root){
+		return ;
+	}
+	os << "\ndigraph G{\n";
+	os << "\tlabel = " << "\"binary_search_tree\"";
+	os << "\tstyle = \"dashed\";\n";
+	os << "\tcolor = purple;\n";
+
+	std::vector<const AvlNode<T>* > nodeList;
+	size_t ip = 0, ichild = 0;
+	nodeList.push_back(root);
+	const AvlNode<T>* pNode = root;
+	while(ip < nodeList.size()){
+		pNode = nodeList[ip];
+		os << "\tNode" << ip << " [ label = \"" << pNode->element << " \"];\n";
+		os << "\tNode" << ip << "->" << "{ ";
+		if(pNode->lchild){
+			os << "Node" << ++ichild << " ";
+			nodeList.push_back(pNode->lchild);
+		}
+		if(pNode->rchild){
+			os << "Node" << ++ichild << " " ;
+			nodeList.push_back(pNode->rchild);
+		}
+		os << "}" << std::endl;
+		ip++;
+	}
+	os << "}" << std::endl;
+	return ;
+}
 
 
 #endif /* AVLIMPL_H_ */

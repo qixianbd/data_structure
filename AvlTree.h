@@ -28,7 +28,7 @@ public:
 	~AvlTree();
 	const AvlTree& operator=(const AvlTree& bst);
 
-
+	void fillWithArray(const std::vector<T>& v);
 	void insert(const T& elem);
 	void remove (const T& elem);
 	void clear();
@@ -41,6 +41,7 @@ public:
 	bool contains(const T& elem)const;
 	void print(std::ostream& os = std::cout);
 	void printAsTree(std::ostream & os = std::cout);
+	void printToDot(std::ostream &os = std::cout);
 	size_t hight()const;
 private:
 	size_t len;
@@ -60,6 +61,7 @@ private:
 	void print(AvlNode<T>* root, std::ostream& os = std::cout);
 	void printAsTree(AvlNode<T>* root, std::ostream& os = std::cout);
 	size_t calHeight(AvlNode<T>* root)const;
+	void printToDot(const AvlNode<T>* root, std::ostream& os = std::cout)const;
 };
 
 
@@ -70,6 +72,7 @@ template<typename T>
 int height(const AvlNode<T>* root){
 	return NULL == root ? -1 : root->height;
 }
+
 
 
 #include "detail_header/avlImpl.h"

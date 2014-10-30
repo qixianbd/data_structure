@@ -1,0 +1,44 @@
+digraph G{
+	label = "binary_search_tree"	style = "dashed";
+	color = purple;
+	Node0 [ label = "9 "];
+	Node0->{ Node1 Node2 }
+	Node1 [ label = "3 "];
+	Node1->{ Node3 Node4 }
+	Node2 [ label = "12 "];
+	Node2->{ Node5 Node6 }
+	Node3 [ label = "1 "];
+	Node3->{ Node7 Node8 }
+	Node4 [ label = "7 "];
+	Node4->{ Node9 Node10 }
+	Node5 [ label = "10 "];
+	Node5->{ Node11 }
+	Node6 [ label = "16 "];
+	Node6->{ Node12 Node13 }
+	Node7 [ label = "0 "];
+	Node7->{ }
+	Node8 [ label = "2 "];
+	Node8->{ }
+	Node9 [ label = "5 "];
+	Node9->{ Node14 Node15 }
+	Node10 [ label = "8 "];
+	Node10->{ }
+	Node11 [ label = "11 "];
+	Node11->{ }
+	Node12 [ label = "14 "];
+	Node12->{ Node16 Node17 }
+	Node13 [ label = "18 "];
+	Node13->{ Node18 Node19 }
+	Node14 [ label = "4 "];
+	Node14->{ }
+	Node15 [ label = "6 "];
+	Node15->{ }
+	Node16 [ label = "13 "];
+	Node16->{ }
+	Node17 [ label = "15 "];
+	Node17->{ }
+	Node18 [ label = "17 "];
+	Node18->{ }
+	Node19 [ label = "19 "];
+	Node19->{ }
+}
