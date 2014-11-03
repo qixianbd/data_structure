@@ -32,6 +32,16 @@ double Random::nextDouble() {
 	return ret;
 }
 
+long int Random::nextLong(long beg, long end){
+	assert(end >= beg);
+	long data = lrand48();
+	long base = end - beg;
+	data %=  base;
+
+	data += beg;
+	return data;
+}
+
 double Random::nextDouble(double beg, double end){
 	assert(end - beg >= 1);
 	double data = nextDouble();
@@ -71,4 +81,25 @@ std::vector<double> Random::randomDoubleArray(double beg, double end, int n) {
 		v.push_back(nextDouble(beg, end));
 	}
 	return v;
+}
+
+
+std::string Random::getFixLengthString(int length){
+	assert(length >= 0);
+	static char* charString =  "abcdefghigklmnopqrstuvwxyz";
+	char* buf = new char[length + 1];
+	int index = 0;
+	for(int i = 0; i < length; i++){
+		index = nextInt(0, 26);
+		buf[i] = charString[index];
+	}
+	buf[length] = '\0';
+	std::string retString(buf);
+	delete[] buf;
+	return retString;
+}
+
+std::string Random::getString(int len) {
+	int realLength = nextInt(1, len+1);
+	return getFixLengthString(realLength);
 }

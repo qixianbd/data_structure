@@ -10,7 +10,9 @@
 
 int main()
 {
+
 	Random r;
+#if !1
 	for(int j = 0; j < 30; j++){
 		int i = r.nextInt(10, 20);
 		std::cerr << "i = " << i << std::endl;
@@ -36,6 +38,17 @@ int main()
 
 	std::vector<double> dv = r.randomDoubleArray(73.2, 98.9, 100);
 	std::copy(dv.begin(), dv.end(), std::ostream_iterator<double>(std::cerr, "\n"));
+#endif
+
+	std::vector<std::string> stringList;
+	for(int i = 0; i < 64; i++){
+		stringList.push_back(r.getFixLengthString(6));
+	}
+	//std::copy(stringList.begin(), stringList.end(), std::ostream_iterator<std::string>(std::cerr, "\n"));
+	std::sort(stringList.begin(), stringList.end());
+	std::copy(stringList.begin(), stringList.end(), std::ostream_iterator<std::string>(std::cerr, "\n"));
+
+
 	return 0;
 
 }
