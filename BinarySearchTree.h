@@ -23,7 +23,6 @@ public:
 
 
 	void fillWithArray(const std::vector<T>& v){
-		size_t len = v.size();
 		for(size_t i = 0; i < v.size(); i++){
 			insert(v[i]);
 		}

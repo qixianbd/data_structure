@@ -19,11 +19,13 @@ public:
 
 	double nextDouble();
 	double nextDouble(double beg, double end);
-	std::string getString(int len = 31);
+	std::string getRandomString(int len = 31);
 	std::string getFixLengthString(int length = 8);
 	std::vector<int> randomUniqueIntArray(int beg, int end);
 	std::vector<int> randomIntArray(int beg, int end, int n);
 	std::vector<double> randomDoubleArray(double beg, double end, int n);
+	std::string getPhoneNum(int length = 7);
+	std::string getPhoneNumWithPrefix(char* prefixBuf, size_t length = 7);
 private:
 	unsigned long seeds;
 };

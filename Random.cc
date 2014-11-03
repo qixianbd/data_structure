@@ -86,7 +86,7 @@ std::vector<double> Random::randomDoubleArray(double beg, double end, int n) {
 
 std::string Random::getFixLengthString(int length){
 	assert(length >= 0);
-	static char* charString =  "abcdefghigklmnopqrstuvwxyz";
+	static const char* charString =  "abcdefghigklmnopqrstuvwxyz";
 	char* buf = new char[length + 1];
 	int index = 0;
 	for(int i = 0; i < length; i++){
@@ -99,7 +99,45 @@ std::string Random::getFixLengthString(int length){
 	return retString;
 }
 
-std::string Random::getString(int len) {
+std::string Random::getRandomString(int len) {
 	int realLength = nextInt(1, len+1);
 	return getFixLengthString(realLength);
+}
+
+std::string Random::getPhoneNum(int length) {
+	assert(length >= 1);
+	static const char* phoneString = "0123456789";
+	char* buf = new char[length + 1];
+	int index = 0;
+	for(int i = 0; i < length; i++){
+		index = nextInt(0, 26);
+		buf[i] = phoneString[index];
+	}
+	buf[length] = '\0';
+	std::string retString(buf);
+	delete[] buf;
+	return retString;
+}
+
+std::string Random::getPhoneNumWithPrefix(char* prefixBuf, size_t length) {
+	char *prefix = NULL;
+	static const char* prefixNum[] = {"132", "136", "139", "151", "158", "159", "183", "186", "187"};
+	int len = sizeof(prefixNum)/ sizeof(prefixNum[0]);
+	if(prefixBuf == NULL){
+		prefix = new char[4];
+		int index = nextInt(0, len+1);
+		strncpy(prefix, prefixNum[index], 4);
+	}
+	else{
+		prefix = prefixBuf;
+	}
+	assert(length >= strlen(prefix));
+
+	std::string ret(prefix);
+	std::string temp = getPhoneNum(length - strlen(prefix));
+	ret+= temp;
+	if(prefixBuf == NULL){
+		delete[] prefix;
+	}
+	return ret;
 }
