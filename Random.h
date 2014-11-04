@@ -25,7 +25,7 @@ public:
 	std::vector<int> randomIntArray(int beg, int end, int n);
 	std::vector<double> randomDoubleArray(double beg, double end, int n);
 	std::string getPhoneNum(int length = 7);
-	std::string getPhoneNumWithPrefix(char* prefixBuf, size_t length = 7);
+	std::string getPhoneNumWithPrefix(const char* prefixBuf, size_t length = 7);
 private:
 	unsigned long seeds;
 };

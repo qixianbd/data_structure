@@ -16,11 +16,11 @@ inline AvlTree<T>::AvlTree(): len(0), proot(NULL){
 }
 
 template<typename T>
-inline AvlTree<T>::AvlTree(const AvlTree& bst) {
+inline AvlTree<T>::AvlTree(const AvlTree& bst):len(bst.len), proot(bst.proot){
 }
 
 template<typename T>
-inline AvlTree<T>::AvlTree(const T* beg, const T* end) {
+inline AvlTree<T>::AvlTree(const T* beg, const T* end): len(0), proot(NULL){
 }
 
 
@@ -82,38 +82,12 @@ template<typename T>
 inline AvlTree<T>::~AvlTree() {
 }
 
-template<typename T>
-inline const AvlTree<T>& AvlTree<T>::operator =(const AvlTree& bst) {
-}
 
 template<typename T>
 inline void AvlTree<T>::insert(const T& elem) {
 	return insert(proot, elem);
 }
 
-template<typename T>
-inline void AvlTree<T>::remove(const T& elem) {
-}
-
-template<typename T>
-inline void AvlTree<T>::clear() {
-}
-
-template<typename T>
-inline const T& AvlTree<T>::findMax() const {
-}
-
-template<typename T>
-inline const T& AvlTree<T>::findMin() const {
-}
-
-template<typename T>
-inline size_t AvlTree<T>::size() const {
-}
-
-template<typename T>
-inline bool AvlTree<T>::isEmpty() const {
-}
 
 template<typename T>
 inline bool AvlTree<T>::contains(const T& elem) const {
@@ -130,10 +104,6 @@ inline void AvlTree<T>::printAsTree(std::ostream& os) {
 	return printAsTree(proot, os);
 }
 
-
-template<typename T>
-inline void AvlTree<T>::remove(AvlNode<T>*& root, const T& elem) {
-}
 
 template<typename T>
 inline void AvlTree<T>::singleRotateLeftChild(AvlNode<T>*& k2) {

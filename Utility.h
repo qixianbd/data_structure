@@ -33,4 +33,6 @@ int stringCmpIngoreCase(const char* str1, const char* str2);
 bool startWithSubString(const std::string& str, const std::string& sub);
 bool endWithSubString(const std::string& str, const std::string& sub);
 
+bool isAllDigit(const std::string& str);
+
 #endif /* UTILITY_H_ */

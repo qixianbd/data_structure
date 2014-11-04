@@ -10,6 +10,29 @@
 
 #include "Random.h"
 #include "Utility.h"
+#include "assert.h"
+
+
+void testEndWithSubString(){
+	std::cerr << "TEST ENDWITHSUBSTRING$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" << std::endl;
+	Random r;
+	for(int i = 0; i < 32; i++){
+		std::string str = r.getPhoneNum(8);
+		std::string sub = r.getRandomString(3);
+		str += sub;
+		std::cerr << str << "\t" << sub << "\t";
+		std::cerr << endWithSubString(str, sub) << std::endl;
+	}
+	const char* endChar[] = {"a", "e", "i", "o", "u"};
+	for(int i = 0; i < 32; i++){
+		std::string str = r.getRandomString(6);
+		std::string sub = endChar[i%5];
+		std::cerr << str << "\t" << sub << "\t";
+		std::cerr << endWithSubString(str, sub) << std::endl;
+	}
+}
+
+
 
 int main()
 {
@@ -41,6 +64,8 @@ int main()
 	strncpy(q, "123456789", 10);
 	memSwap(p, q, 10);
 	std::cerr << p << "\t" << q << '\n';
+	delete[] p;
+	delete[] q;
 
 	long number2[] = {128, 1, -4, 255, 1024*1024*1024*2-1, -4, 4, 5, 6, 1, -1,  -128};
 	memSwap(number,number2, sizeof(number) );
@@ -70,8 +95,31 @@ int main()
 
 		std::cerr << str << '\t' << bufCpy << '\t' ;
 		std::cerr << stringCmpIngoreCase(buf, bufCpy) << std::endl;
+		delete[] bufCpy;
 	}
 
+	static const char* digitArray[] = {"131", "139", "159", "151", "183"};
+	int arrayLength = sizeof(digitArray)/sizeof(digitArray[0]);
+
+	for(int i = 0; i < 52; i++){
+		int index = r.nextInt(0,arrayLength);
+		const char* prefix = digitArray[index];
+		std::string theString = r.getPhoneNumWithPrefix(NULL, 11);
+		std::cerr << prefix << "\t" << theString;
+		std::cerr << "\t" << startWithSubString(theString, std::string(prefix)) << std::endl;
+
+	}
+
+	assert(isAllDigit(std::string("123")));
+	assert(isAllDigit(std::string("")));
+	assert(!isAllDigit(std::string("a1231 da")));
+	assert(isAllDigit(std::string("1")));
+	assert(!isAllDigit(std::string("1423523564 374376473473")));
+	assert(!isAllDigit(std::string("A")));
+
+
+	testEndWithSubString();
+	std::cerr << "All Test Pasted." << std::endl;
 
 	return 0;
 }

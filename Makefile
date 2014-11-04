@@ -1,8 +1,9 @@
 CXX= g++
 CC= g++
-CFLAGS=  -c -g -Wall 
+CFLAGS=  -c -g -Wall  
 CXXFLAGS= -c -g -Wall 
 LANG=en_US
+
 
 .PHONY:all
 all: BinarySearchTree_Test.out AvlTree_Test.out Random_Test.out SearchTreePerformanceTest.out Utility_Test.out

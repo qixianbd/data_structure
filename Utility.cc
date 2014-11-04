@@ -105,25 +105,27 @@ bool startWithSubString(const std::string& str, const std::string& sub) {
 }
 
 bool endWithSubString(const std::string& str, const std::string& sub) {
-	const char* destString = str.c_str();
-	const char* subString = sub.c_str();
-
-	if(strcmp(subString, "") == 0){
+	int strLength = str.length(), subLength = sub.length();
+	if(strLength < subLength){
 		return false;
 	}
-
-	const char* p = destString + str.length() -1;
-	const char* q = subString + str.length() -1;
-
-	int size = sub.length();
-	while(size > 0){
-		if(*p == *q){
-			p--, q--;
-		}
-		else{
+	for(int i = strLength-1, j = subLength-1; i >= 0 && j >= 0; i--, j--){
+		if(str[i] != sub[j]){
 			return false;
 		}
-		--size;
 	}
 	return true;
 }
+
+
+bool isAllDigit(const std::string& str){
+	int length = str.length();
+	for(int i = 0; i < length; i++){
+		if(!isdigit(str[i])){
+			return false;
+		}
+	}
+	return true;
+}
+
+

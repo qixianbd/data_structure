@@ -12,7 +12,7 @@ int main()
 {
 
 	Random r;
-#if !1
+#if 1
 	for(int j = 0; j < 30; j++){
 		int i = r.nextInt(10, 20);
 		std::cerr << "i = " << i << std::endl;
@@ -40,6 +40,7 @@ int main()
 	std::copy(dv.begin(), dv.end(), std::ostream_iterator<double>(std::cerr, "\n"));
 #endif
 
+#if !2
 	std::vector<std::string> stringVector;
 	for(int i = 0; i < 64; i++){
 		stringVector.push_back(r.getFixLengthString(6));
@@ -47,7 +48,27 @@ int main()
 	//std::copy(stringList.begin(), stringList.end(), std::ostream_iterator<std::string>(std::cerr, "\n"));
 	std::sort(stringVector.begin(), stringVector.end());
 	std::copy(stringVector.begin(), stringVector.end(), std::ostream_iterator<std::string>(std::cerr, "\n"));
+#endif
 
+#if !2
+	std::vector<std::string> stringVector;
+	for(int i = 0; i < 16; i++){
+		stringVector.push_back(r.getPhoneNum(11));
+	}
+	//std::copy(stringList.begin(), stringList.end(), std::ostream_iterator<std::string>(std::cerr, "\n"));
+	std::sort(stringVector.begin(), stringVector.end());
+	std::copy(stringVector.begin(), stringVector.end(), std::ostream_iterator<std::string>(std::cerr, "\n"));
+
+	std::cerr <<"**************************" << std::endl;
+	stringVector.clear();
+	const char* digitArray[] = {"138", "139", "159", "168"};
+	for(int i = 0; i < 16; i++){
+		stringVector.push_back(r.getPhoneNumWithPrefix("159", 11));
+	}
+	//std::copy(stringList.begin(), stringList.end(), std::ostream_iterator<std::string>(std::cerr, "\n"));
+	std::sort(stringVector.begin(), stringVector.end());
+	std::copy(stringVector.begin(), stringVector.end(), std::ostream_iterator<std::string>(std::cerr, "\n"));
+#endif
 
 	return 0;
 

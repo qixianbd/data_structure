@@ -57,7 +57,7 @@ std::vector<int> Random::randomUniqueIntArray(int beg, int end) {
 	int n = end - beg;
 	for(int i = 0; i < n; i++){
 		int j = nextInt(0, n);
-		std::swap(v[j], v[n-j]);
+		std::swap(v[j], v[n-1-j]);
 	}
 	return v;
 }
@@ -110,7 +110,7 @@ std::string Random::getPhoneNum(int length) {
 	char* buf = new char[length + 1];
 	int index = 0;
 	for(int i = 0; i < length; i++){
-		index = nextInt(0, 26);
+		index = nextInt(0, 10);
 		buf[i] = phoneString[index];
 	}
 	buf[length] = '\0';
@@ -118,26 +118,37 @@ std::string Random::getPhoneNum(int length) {
 	delete[] buf;
 	return retString;
 }
+static bool _isAllDigit(const std::string& str){
+	int length = str.length();
+	for(int i = 0; i < length; i++){
+		if(!isdigit(str[i])){
+			return false;
+		}
+	}
+	return true;
+}
 
-std::string Random::getPhoneNumWithPrefix(char* prefixBuf, size_t length) {
+std::string Random::getPhoneNumWithPrefix(const char* prefixBuf, size_t length) {
 	char *prefix = NULL;
 	static const char* prefixNum[] = {"132", "136", "139", "151", "158", "159", "183", "186", "187"};
 	int len = sizeof(prefixNum)/ sizeof(prefixNum[0]);
 	if(prefixBuf == NULL){
 		prefix = new char[4];
-		int index = nextInt(0, len+1);
+		int index = nextInt(0, len);
 		strncpy(prefix, prefixNum[index], 4);
+		prefix[3] = '\0';
 	}
 	else{
-		prefix = prefixBuf;
+		prefix = const_cast<char*>(prefixBuf);
 	}
-	assert(length >= strlen(prefix));
+	assert(length > strlen(prefix));
 
 	std::string ret(prefix);
 	std::string temp = getPhoneNum(length - strlen(prefix));
-	ret+= temp;
+	ret += temp;
 	if(prefixBuf == NULL){
 		delete[] prefix;
 	}
+	assert(_isAllDigit(ret));
 	return ret;
 }
