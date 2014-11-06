@@ -6,7 +6,8 @@ LANG=en_US
 
 
 .PHONY:all
-all: BinarySearchTree_Test.out AvlTree_Test.out Random_Test.out SearchTreePerformanceTest.out Utility_Test.out
+all: BinarySearchTree_Test.out AvlTree_Test.out Random_Test.out SearchTreePerformanceTest.out Utility_Test.out HashTable_Test.out
+
 
 BinarySearchTree_Test.out:BinarySearchTree_Test.o Random.o
 	g++ -o $@ $^
@@ -30,11 +31,17 @@ SearchTreePerformanceTest.o:SearchTreePerformanceTest.cc Random.h AvlTree.h Bina
 
 
 
+
 Utility_Test.out:Utility_Test.o Utility.o Random.o
 	g++ -o $@ $^
 Utility_Test.o:Utility_Test.cc Utility.h
 Utility.o:Utility.cc Utility.h
 
+
+HashTable_Test.out: HashTable_Test.o Random.o
+	g++ -o $@ $^
+
+HashTable_Test.o:HashTable_Test.cc HashTable.h
 
 .PHONY:clean
 clean: 
