@@ -5,8 +5,10 @@ CXXFLAGS= -c -g -Wall
 LANG=en_US
 
 
+
 .PHONY:all
-all: BinarySearchTree_Test.out AvlTree_Test.out Random_Test.out SearchTreePerformanceTest.out Utility_Test.out HashTable_Test.out
+all: BinarySearchTree_Test.out AvlTree_Test.out Random_Test.out SearchTreePerformanceTest.out Utility_Test.out HashTable_Test.out\
+skiplistwithc.out skipList.out SkipList_Test.out
 
 
 BinarySearchTree_Test.out:BinarySearchTree_Test.o Random.o
@@ -42,6 +44,22 @@ HashTable_Test.out: HashTable_Test.o Random.o
 	g++ -o $@ $^
 
 HashTable_Test.o:HashTable_Test.cc HashTable.h
+
+
+skiplistwithc.out:skiplistwithc.o
+	gcc -o $@ $^
+skiplistwithc.o: skiplistwithc.c skiplistwithc.h
+	gcc -c -g -o skiplistwithc.o skiplistwithc.c
+
+
+skipList.out:skipList.o
+	g++ -o $@  $^ -lm 
+skipList.o:skipList.cc
+
+
+SkipList_Test.out:SkipList_Test.o Random.o
+	g++ -o $@  $^
+SkipList_Test.o :SkipList_Test.cc SkipList.h
 
 .PHONY:clean
 clean: 

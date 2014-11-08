@@ -27,6 +27,7 @@ public:
 	HashTable();
 	void put(const std::string& key, const T& element);
 	T get(const std::string& key);
+	void deleteElement(const std::string& key, const T& element);
 	bool contains(const std::string& key);
 	~HashTable();
 	void print(std::ostream& os = std::cout)const;
@@ -117,12 +118,12 @@ template<typename T>
 void HashTable<T>::rehash() {
 	size_t newSize = size*2;
 	HashBucket* newBucketPtr = new HashBucket [newSize];
-	for(int i = 0; i < newSize; i++){
+	for(size_t i = 0; i < newSize; i++){
 		newBucketPtr[i].basePtr = NULL;
 		newBucketPtr[i].listLength = 0;
 	}
 
-	for(int i = 0; i < size; i++){
+	for(size_t i = 0; i < size; i++){
 		std::list<T>* pl = newBucketPtr[i].basePtr;
 		if(NULL == pl){
 			continue;
@@ -196,6 +197,22 @@ inline void HashTable<T>::insert(HashTable<T>::HashBucket* bucketBase, size_t ha
 	}
 	base->push_back(element);
 	bucketBase[keyIndex].listLength++;
+	return ;
+}
+
+template<typename T>
+inline void HashTable<T>::deleteElement(const std::string& key,
+		const T& element) {
+	unsigned long keyIndex = hashFunc(key, size);
+	std::list<T>*& base = (bucketPtr[keyIndex]).basePtr;
+	if(NULL == base){
+		return ;
+	}
+	base->remove(element);
+	(bucketPtr[keyIndex]).listLength--;
+	if((bucketPtr[keyIndex]).listLength <= 0){
+		base = NULL;
+	}
 	return ;
 }
 

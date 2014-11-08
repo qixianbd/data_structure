@@ -28,7 +28,7 @@ int main()
 
 	double min = 1000.00, max = -1.0;
 	for(int j = 0; j < 10; j++){
-		double d  = r.nextDouble(6.5, 9.5);
+		double d  = r.nextDouble(0.0, 1.0);
 		max = max >= d ? max : d;
 		min = min <= d ? min : d;
 
